@@ -23,13 +23,13 @@ class sdkman (
 ) {
 
     $user_group = $group ? {
-      '' => $owner,
+      ''      => $owner,
       default => $group
     }
 
     $user_home = $homedir ? {
-      '' => $owner ? {
-        'root' =>  '/root',
+      ''      => $owner ? {
+        'root'  =>  '/root',
         default => "/home/$owner"
       },
       default => $homedir

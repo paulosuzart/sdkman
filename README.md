@@ -1,9 +1,9 @@
 paulosuzart/sdkman
 ---------------
 
-**former [paulosuzart/gvm](https://forge.puppetlabs.com/paulosuzart/gvm) now with**
+**former [paulosuzart/gvm](https://forge.puppetlabs.com/paulosuzart/gvm)**
 
-Module can be use to install [Sdkman](http://sdkman.io) and manage its available packages;
+Module can be used to install [Sdkman](http://sdkman.io) and manage its available packages;
 
 Usage
 -----

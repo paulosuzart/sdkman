@@ -17,8 +17,8 @@
 #
 
 define sdkman::package (
-  $package_name =  $name,
   $version,
+  $package_name = $name,
   $is_default   = false,
   $ensure       = present,
   $timeout      = 0 # disabled by default instead of 300 seconds defined by Puppet
