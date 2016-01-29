@@ -47,6 +47,13 @@ The `package_name` is also useful for multiple versions of a given package.
 
 *It is required `Package['unzip']` declared somewhere in your manifests.*
 
+Use sdkman::package_hash to install using Hiera databinding. For example
+```
+sdkman::package_hash:
+  'groovy': { version: '2.4.5' }
+
+```
+
 Limitations
 -----------
 Tested and mostly built to run with Ubuntu/Debian.
@@ -54,6 +61,10 @@ Tested and mostly built to run with Ubuntu/Debian.
 
 Release Notes
 -------------
+
+Notes for release 1.0.1
+
+  - Added a package_hash for adding packages by using Hiera databinding
 
 Notes for release 1.0.0
 
