@@ -13,14 +13,20 @@
 #
 # [*homedir*]
 # The owner's home directory.  This can be omitted if the home directory is /root or /home/$owner
+#
+# [*package_hash*]
+# A hash containing all packages to be installed by using hiera databinding
 
 class sdkman (
-    $owner     = 'root',
-    $group     = '',
-    $homedir   = '',
-    $java_home = '',
-    $sh        = '/bin/bash'
+    $owner        = 'root',
+    $group        = '',
+    $homedir      = '',
+    $java_home    = '',
+    $sh           = '/bin/bash',
+    $package_hash = {}
 ) {
+
+    validate_hash($package_hash)
 
     $user_group = $group ? {
       ''      => $owner,
@@ -63,4 +69,6 @@ class sdkman (
       group  => $user_group,
       source => "puppet:///modules/sdkman/sdkman_config"
     }
+
+    include sdkman::packages
 }
