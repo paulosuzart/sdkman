@@ -48,7 +48,7 @@ class sdkman (
     }
 
     wget::fetch {'http://get.sdkman.io':
-      destination => "/tmp/sdkman-install.sh",
+      destination => '/tmp/sdkman-install.sh',
       verbose     => true,
       execuser    => $owner,
       user        => $owner,
@@ -56,7 +56,7 @@ class sdkman (
     exec { 'Install Sdkman' :
       user        => $owner,
       environment => $base_env,
-      path        => "/usr/bin:/usr/sbin:/bin",
+      path        => '/usr/bin:/usr/sbin:/bin',
       command     => "$sh sdkman-install.sh",
       cwd         => '/tmp',
       logoutput   => true,
@@ -67,7 +67,7 @@ class sdkman (
       ensure => file,
       owner  => $owner,
       group  => $user_group,
-      source => "puppet:///modules/sdkman/sdkman_config"
+      source => 'puppet:///modules/sdkman/sdkman_config'
     }
 
     include sdkman::packages
