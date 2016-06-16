@@ -38,9 +38,9 @@ define sdkman::package (
 
   exec { "sdk $sdkman_operation $package_name $version" :
     environment => $sdkman::base_env,
-    command      => "bash -c '$sdkman_init && sdk $sdkman_operation $package_name $version'",
+    command      => "su -c '$sdkman_init && sdk $sdkman_operation $package_name $version' - ${::sdkman::owner}",
     unless       => $sdkman_operation_unless,
-    user         => $sdkman::owner,
+    user         => 'root',
     require      => Class['sdkman'],
     path         => "/usr/bin:/usr/sbin:/bin",
     logoutput    => true,
@@ -50,12 +50,12 @@ define sdkman::package (
   if $ensure == present and $is_default {
     exec {"sdk default $package_name $version" :
       environment => $sdkman::base_env,
-      command     => "bash -c '$sdkman_init && sdk default $package_name $version'",
-      user        => $sdkman::owner,
+      command     => "su -c '$sdkman_init && sdk default $package_name $version' -${::sdkman::owner}",
+      user        => 'root',
       path        => '/usr/bin:/usr/sbin:/bin',
       logoutput   => true,
       require     => Exec["sdk install $package_name $version"],
-      unless      => "test \"$version\" = \$(find $sdkman::user_home/.sdkman/candidates/$package_name -type l -printf '%p -> %l\\n'| awk '{print \$3}' | awk -F'/' '{print \$NF}')",
+      unless      => "test \"$version\" = \$(find ${sdkman::user_home}/.sdkman/candidates/${package_name} -type l -printf '%p -> %l\\n'| awk '{print \$3}' | awk -F'/' '{print \$NF}')",
       timeout     => $timeout
     }
   }
