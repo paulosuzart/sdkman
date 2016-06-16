@@ -55,7 +55,7 @@ define sdkman::package (
       path        => '/usr/bin:/usr/sbin:/bin',
       logoutput   => true,
       require     => Exec["sdk install $package_name $version"],
-      unless      => "test \"$version\" = \$(find $user_home/.sdkman/candidates/$package_name -type l -printf '%p -> %l\\n'| awk '{print \$3}' | awk -F'/' '{print \$NF}')",
+      unless      => "test \"$version\" = \$(find $sdkman::user_home/.sdkman/candidates/$package_name -type l -printf '%p -> %l\\n'| awk '{print \$3}' | awk -F'/' '{print \$NF}')",
       timeout     => $timeout
     }
   }
