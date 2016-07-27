@@ -62,6 +62,10 @@ Tested and mostly built to run with Ubuntu/Debian.
 Release Notes
 -------------
 
+Notes for release 1.0.2
+  - Merged [PR](https://github.com/paulosuzart/sdkman/pull/3) from [af6140](https://github.com/af6140)
+  - Some lint
+
 Notes for release 1.0.1
 
   - Added a package_hash for adding packages by using Hiera databinding
