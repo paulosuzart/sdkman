@@ -50,7 +50,7 @@ define sdkman::package (
   if $ensure == present and $is_default {
     exec {"sdk default $package_name $version" :
       environment => $sdkman::base_env,
-      command     => "su -c '$sdkman_init && sdk default $package_name $version' -${::sdkman::owner}",
+      command     => "su -c '$sdkman_init && sdk default $package_name $version' - ${::sdkman::owner}",
       user        => 'root',
       path        => '/usr/bin:/usr/sbin:/bin',
       logoutput   => true,
