@@ -4,6 +4,7 @@
 "description": "Installs Sdkman and any package supported by it",
 "license": "Apache License 2.0",
 "summary": "Paulo Suzart Sdkman module",
+"author": "Paulo Suzart",
 "project_page": "https://github.com/paulosuzart/sdkman",
 "source": "https://github.com/paulosuzart/sdkman",
 "issues_url": null,
